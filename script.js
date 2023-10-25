@@ -1,6 +1,6 @@
 class CurrencyInput extends React.Component {
   render() {
-    const {value, handleChange} = this.props;
+    const { value, handleChange } = this.props;
     return <input value={value} onChange={handleChange} type="number" />
   }
 }
@@ -9,9 +9,9 @@ class CurrencyConverter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rate: .94,
+      rate: 0.94,
       usd: 1,
-      euro: 1 * .94
+      euro: 1 * 0.94,
     };
 
     this.handleUsdChange = this.handleUsdChange.bind(this);
@@ -51,8 +51,7 @@ class CurrencyConverter extends React.Component {
   }
 
   render() {
-    const {rate, usd, euro} = this.state;
-
+    const { rate, usd, euro } = this.state;
     return (
       <div className="container">
         <div className="text-center p-3 mb-2">
@@ -62,18 +61,17 @@ class CurrencyConverter extends React.Component {
         <div className="row text-center">
           <div className="col-12">
             <span className="mr-1">USD</span>
-            <CurrencyInput value={usd} onChange={this.handleUsdChange} type="number" />
+            <CurrencyInput value={usd} handleChange={this.handleUsdChange} />
             <span className="mx-3">=</span>
-            <CurrencyInput value={euro} onChange={this.handleEuroChange} type="number" />
+            <CurrencyInput value={euro} handleChange={this.handleEuroChange} />
             <span className="ml-1">EURO</span>
           </div>
         </div>
       </div>
-
     )
   }
 }
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
-root.render(<CurrencyConverter />)
+root.render(<CurrencyConverter />);
